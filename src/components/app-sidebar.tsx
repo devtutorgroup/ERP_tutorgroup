@@ -5,6 +5,9 @@ import {
   Search,
   Settings,
   ChevronDown,
+  NotebookPen,
+  FileUser,
+  AlarmClock,
 } from "lucide-react";
 import {
   Collapsible,
@@ -29,8 +32,8 @@ import {
 // Menu items with sub-items
 const items = [
   {
-    title: "Home",
-    url: "#",
+    title: "หน้าหลัก",
+    url: "",
     icon: Home,
     items: [
       {
@@ -48,93 +51,100 @@ const items = [
     ],
   },
   {
-    title: "Inbox",
+    title: "ฐานข้อมูล",
     url: "#",
-    icon: Inbox,
+    icon: NotebookPen,
     items: [
       {
-        title: "All Messages",
+        title: "ไฟล์หนังสือ",
+        url: "#a",
+      },
+      {
+        title: "หนังสือเรียน",
         url: "#",
       },
       {
-        title: "Unread",
+        title: "นักเรียน",
         url: "#",
       },
       {
-        title: "Starred",
+        title: "โรงเรียน",
         url: "#",
       },
       {
-        title: "Sent",
+        title: "คอร์สเรียน",
         url: "#",
       },
     ],
   },
   {
-    title: "Calendar",
+    title: "รายการรับสมัคร",
+    url: "#",
+    icon: FileUser,
+    items: [
+      {
+        title: "Zigma",
+        url: "#",
+      },
+      {
+        title: "omega",
+        url: "#",
+      },
+    ],
+  },
+  {
+    title: "ระเบียบการห้องสด",
     url: "#",
     icon: Calendar,
     items: [
       {
-        title: "Today",
+        title: "สาขาเมกาบางนา",
         url: "#",
       },
       {
-        title: "This Week",
-        url: "#",
-      },
-      {
-        title: "This Month",
-        url: "#",
-      },
-      {
-        title: "Events",
+        title: "สุขาภิบาล3",
         url: "#",
       },
     ],
   },
   {
-    title: "Search",
+    title: "weekly room",
     url: "#",
-    icon: Search,
+    icon: AlarmClock,
     items: [
       {
-        title: "Quick Search",
+        title: "สาขาเมกาบางนา",
         url: "#",
       },
       {
-        title: "Advanced Search",
-        url: "#",
-      },
-      {
-        title: "Search History",
+        title: "สุขาภิบาล3",
         url: "#",
       },
     ],
   },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
-    items: [
-      {
-        title: "Profile",
-        url: "#",
-      },
-      {
-        title: "Preferences",
-        url: "#",
-      },
-      {
-        title: "Security",
-        url: "#",
-      },
-      {
-        title: "Notifications",
-        url: "#",
-      },
-    ],
-  },
+  // {
+  //   title: "Settings",
+  //   url: "#",
+  //   icon: Settings,
+  //   items: [
+  //     {
+  //       title: "Profile",
+  //       url: "#",
+  //     },
+  //     {
+  //       title: "Preferences",
+  //       url: "#",
+  //     },
+  //     {
+  //       title: "Security",
+  //       url: "#",
+  //     },
+  //     {
+  //       title: "Notifications",
+  //       url: "#",
+  //     },
+  //   ],
+  // },
 ];
 
 export function AppSidebar() {
@@ -160,7 +170,7 @@ export function AppSidebar() {
                     <CollapsibleTrigger asChild>
                       <SidebarMenuButton>
                         <item.icon className="!w-6 !h-6" />
-                        <span>{item.title}</span>
+                        <span className="text-blue-700">{item.title}</span>
                         <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
                       </SidebarMenuButton>
                     </CollapsibleTrigger>
