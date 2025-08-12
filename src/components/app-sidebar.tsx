@@ -28,67 +28,68 @@ import {
   SidebarMenuSubItem,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 // Menu items with sub-items
 const items = [
   {
     title: "หน้าหลัก",
-    url: "",
+    url: "/",
     icon: Home,
-    items: [
-      {
-        title: "Dashboard",
-        url: "#",
-      },
-      {
-        title: "Overview",
-        url: "#",
-      },
-      {
-        title: "Analytics",
-        url: "#",
-      },
-    ],
+    // items: [
+    //   {
+    //     title: "Dashboard",
+    //     url: "/Dashboard",
+    //   },
+    //   {
+    //     title: "Overview",
+    //     url: "/overview",
+    //   },
+    //   {
+    //     title: "Analytics",
+    //     url: "/analytics",
+    //   },
+    // ],
   },
   {
     title: "ฐานข้อมูล",
-    url: "#",
+    url: "/data",
     icon: NotebookPen,
     items: [
       {
         title: "ไฟล์หนังสือ",
-        url: "#a",
+        url: "/data/files",
       },
       {
         title: "หนังสือเรียน",
-        url: "#",
+        url: "/data/textbooks",
       },
       {
         title: "นักเรียน",
-        url: "#",
+        url: "/data/students",
       },
       {
         title: "โรงเรียน",
-        url: "#",
+        url: "/data/schools",
       },
       {
         title: "คอร์สเรียน",
-        url: "#",
+        url: "/data/courses",
       },
     ],
   },
   {
     title: "รายการรับสมัคร",
-    url: "#",
+    url: "/admissions",
     icon: FileUser,
     items: [
       {
         title: "Zigma",
-        url: "#",
+        url: "/admissions/zigma",
       },
       {
         title: "omega",
-        url: "#",
+        url: "/admissions/omega",
       },
     ],
   },
@@ -99,11 +100,11 @@ const items = [
     items: [
       {
         title: "สาขาเมกาบางนา",
-        url: "#",
+        url: "/calendar/mega-bangna",
       },
       {
         title: "สุขาภิบาล3",
-        url: "#",
+        url: "/calendar/sukhumvit-3",
       },
     ],
   },
@@ -114,11 +115,11 @@ const items = [
     items: [
       {
         title: "สาขาเมกาบางนา",
-        url: "#",
+        url: "/weekly-room/mega-bangna",
       },
       {
         title: "สุขาภิบาล3",
-        url: "#",
+        url: "/weekly-room/sukhumvit-3",
       },
     ],
   },
@@ -166,26 +167,44 @@ export function AppSidebar() {
                   defaultOpen={false}
                   className="group/collapsible"
                 >
-                  <SidebarMenuItem>
-                    <CollapsibleTrigger asChild>
-                      <SidebarMenuButton>
-                        <item.icon className="!w-6 !h-6" />
-                        <span className="text-blue-700">{item.title}</span>
-                        <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+                  {item.items ? (
+                    <SidebarMenuItem>
+                      <CollapsibleTrigger asChild>
+                        <SidebarMenuButton>
+                          <item.icon className="!w-6 !h-6" />
+                          {/* <Link href={item.url} className="text-blue-700">
+                          {item.title}
+                        </Link> */}
+                          <span className="ml-2 text-blue-700">
+                            {item.title}
+                          </span>
+                          <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+                        </SidebarMenuButton>
+                      </CollapsibleTrigger>
+                      <CollapsibleContent>
+                        <SidebarMenuSub>
+                          {item.items?.map((subItem) => (
+                            <SidebarMenuSubItem key={subItem.title}>
+                              <SidebarMenuSubButton asChild>
+                                <Link href={subItem.url}>{subItem.title}</Link>
+                              </SidebarMenuSubButton>
+                            </SidebarMenuSubItem>
+                          ))}
+                        </SidebarMenuSub>
+                      </CollapsibleContent>
+                    </SidebarMenuItem>
+                  ) : (
+                    <SidebarMenuItem key={item.title}>
+                      <SidebarMenuButton asChild>
+                        <a href={item.url}>
+                          <item.icon className="!w-6 !h-6" />
+                          <span className="ml-2 text-blue-700">
+                            {item.title}
+                          </span>
+                        </a>
                       </SidebarMenuButton>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      <SidebarMenuSub>
-                        {item.items?.map((subItem) => (
-                          <SidebarMenuSubItem key={subItem.title}>
-                            <SidebarMenuSubButton asChild>
-                              <a href={subItem.url}>{subItem.title}</a>
-                            </SidebarMenuSubButton>
-                          </SidebarMenuSubItem>
-                        ))}
-                      </SidebarMenuSub>
-                    </CollapsibleContent>
-                  </SidebarMenuItem>
+                    </SidebarMenuItem>
+                  )}
                 </Collapsible>
               ))}
             </SidebarMenu>

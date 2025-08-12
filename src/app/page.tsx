@@ -3,10 +3,18 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className=" min-h-screen">
-      {/* <div className="mt-12 h-16"></div> */}
-      <h1 className=" text-amber-600">hello</h1>;
-      <Menu className="h-10 w-10 cursor-pointer text-gray-700" />
+    <div className="relative w-full">
+      <Image
+        src="/home.png"
+        alt="Not Found"
+        width={800}
+        height={800}
+        className="w-full z-0"
+      />
+
+      <h1 className="absolute top-1/3 left-2/5 transform -translate-x-1/2 inset-0   text-white text-6xl font-bold z-10">
+        Home Page
+      </h1>
     </div>
   );
 }

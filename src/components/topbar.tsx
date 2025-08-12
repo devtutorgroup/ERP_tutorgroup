@@ -6,7 +6,7 @@ import { SidebarTrigger } from "./ui/sidebar";
 
 export default function Topbar() {
   return (
-    <header className="w-full h-16 fixed bg-white shadow flex items-center justify-between px-6">
+    <header className="w-full h-16 fixed bg-white shadow flex items-center justify-between px-6 z-10">
       {/* Left: Logo or Menu Button */}
       <div className="flex items-center gap-4">
         {/* <Menu className="h-6 w-6 cursor-pointer text-gray-700" />

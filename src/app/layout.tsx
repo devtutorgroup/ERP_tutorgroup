@@ -20,9 +20,9 @@ export default function RootLayout({
       <body>
         <SidebarProvider>
           <Topbar />
-
           <AppSidebar />
           <main className="w-full h-screen pt-16">
+            {/* <main className="w-full h-screen "> */}
             {/* <SidebarTrigger /> */}
             {/* <div className="h-16 w-full"></div> */}
             {children}
